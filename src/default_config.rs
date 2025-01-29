@@ -87,7 +87,7 @@ tun:
   auto-detect-interface: true
 
 proxy-groups:
-  - name: 世界树枝干
+  - name: Minearm
     type: select
     interval: 0
     url: http://cp.cloudflare.com
@@ -110,7 +110,7 @@ proxy-groups:
     interval: 0
     proxies:
       - DIRECT
-      - 世界树枝干
+      - Minearm
   - name: 广告
     type: select
     interval: 0
@@ -119,22 +119,22 @@ proxy-groups:
       - REJECT
       - REJECT-DROP
       - DIRECT
-      - 世界树枝干
+      - Minearm
   - name: 其他
     type: select
     interval: 0
     url: http://cp.cloudflare.com
     proxies:
-      - 世界树枝干
+      - Minearm
       - DIRECT
 rules:
   - IP-CIDR,224.0.0.0/3,DIRECT
   - IP-CIDR6,ff00::/8,DIRECT
   - GEOIP,private,DIRECT
   - DOMAIN,www.nahida.im,DIRECT
-  - GEOIP,CN,国内
-  - GEOSITE,CN,国内
-  - GEOSITE,category-ads-all,广告
+  - GEOIP,CN
+  - GEOSITE,CN
+  - GEOSITE,category-ads-all
   - MATCH,其他"#;
 
 pub const SING_BOX: &str = r#"{
@@ -146,7 +146,7 @@ pub const SING_BOX: &str = r#"{
           "external_controller": "127.0.0.1:9090",
           "external_ui": "ui",
           "external_ui_download_url": "https://github.com/MetaCubeX/metacubexd/archive/refs/heads/gh-pages.zip",
-          "external_ui_download_detour": "🌊 选择",
+          "external_ui_download_detour": "选",
         },
     },
   "log": { "level": "info", "timestamp": true },
@@ -163,13 +163,13 @@ pub const SING_BOX: &str = r#"{
             "tag": "ali",
             "address": "quic://dns.alidns.com",
             "address_resolver": "ali_ip",
-            "detour": "🚀 直连",
+            "detour": "直连",
           },
           { "tag": "cloudflare_ip", "address": "h3://1.1.1.1/dns-query" },
           {
             "tag": "ali_ip",
             "address": "quic://223.5.5.5",
-            "detour": "🚀 直连",
+            "detour": "直连",
           },
           { "tag": "dns_block", "address": "rcode://success" },
         ],
@@ -206,28 +206,28 @@ pub const SING_BOX: &str = r#"{
     ],
   "outbounds":
     [
-      { "type": "direct", "tag": "🚀 直连" },
-      { "type": "block", "tag": "🔌 拔线" },
+      { "type": "direct", "tag": "骷髅打金服" },
+      { "type": "block", "tag": "拔线" },
       { "type": "dns", "tag": "dns-out" },
-      { "type": "selector", "tag": "🌳 世界树枝干", "outbounds": [] },
-      { "type": "selector", "tag": "🌊 选择", "outbounds": [] },
+      { "type": "selector", "tag": "Minearm", "outbounds": [] },
+      { "type": "selector", "tag": "选择", "outbounds": [] },
     ],
   "route":
     {
       "rules":
         [
           { "protocol": "dns", "outbound": "dns-out" },
-          { "clash_mode": "global", "outbound": "🌊 选择" },
-          { "clash_mode": "direct", "outbound": "🚀 直连" },
+          { "clash_mode": "global", "outbound": "选择" },
+          { "clash_mode": "direct", "outbound": "直连" },
           {
-            "domain": "www.nahida.im",
+            "domain": "proxy5.minearm.org",
             "geosite": "cn",
             "ip_cidr": ["224.0.0.0/3", "ff00::/8"],
             "geoip": ["cn", "private"],
-            "outbound": "🚀 直连",
+            "outbound": "直连",
           },
         ],
       "auto_detect_interface": true,
-      "final": "🌊 选择",
+      "final": "选择",
     },
 }"#;
