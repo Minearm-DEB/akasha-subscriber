@@ -1,5 +1,5 @@
 <!-- markdownlint-disable-file MD001 MD013 MD033 -->
-<h1 align = "center">虚空订阅器</h1>
+<h1 align = "center">Minearm</h1>
 
 这个是一个可以运行在 Cloudflare Workers 上的节点订阅器，可以生成 Base64 和 Mihomo 格式的订阅
 
