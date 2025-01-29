@@ -1,11 +1,11 @@
 [package]
 name = "subscriber"
-version = "0.1.0"
+version = "11.45.14"
 edition = "2021"
 description = "Proxies Subscriber use Cloudflare Workers"
-repository = "https://github.com/Buer-Nahida/subscriber"
+repository = "https://github.com/Minearm-DEB/akasha-subscriber/"
 license = "AGPL-3.0"
-authors = ["纳西妲 · Nahida <me@nahida.im>"]
+authors = ["Minearm-RPM <ms@minearm.org>"]
 
 [package.metadata.release]
 release = false
